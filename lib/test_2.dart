@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     Widget titleSection = Container(
@@ -16,7 +18,7 @@ class MyApp extends StatelessWidget {
               children: [
                 Container(
                   padding: const EdgeInsets.only(bottom: 8),
-                  child: Text(
+                  child: const Text(
                     '나는 너를 사랑해요웅웅',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -36,21 +38,19 @@ class MyApp extends StatelessWidget {
             Icons.star,
             color: Colors.red[500],
           ),
-          Text('41'),
+          const Text('41'),
         ],
       ),
     );
 
     Color color = Theme.of(context).primaryColor;
-    Widget buttonSection = Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          _buildButtonColumn(color, Icons.call, 'CALL'),
-          _buildButtonColumn(color, Icons.near_me, 'ROUTE'),
-          _buildButtonColumn(color, Icons.share, 'SHARE'),
-        ],
-      ),
+    Widget buttonSection = Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        _buildButtonColumn(color, Icons.call, 'CALL'),
+        _buildButtonColumn(color, Icons.near_me, 'ROUTE'),
+        _buildButtonColumn(color, Icons.share, 'SHARE'),
+      ],
     );
 
     final wordPair = WordPair.random();
@@ -59,13 +59,28 @@ class MyApp extends StatelessWidget {
       title: 'Welcome to Flutter',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Welcome to Flutter'),
+          title: const Text('Welcome to Flutter'),
         ),
-        body: Column(
+        body: ListView(
           children: [
+            Image.asset(
+              'images/lake.jpg',
+              width: 600,
+              height: 240,
+              fit: BoxFit.cover,
+            ),
             titleSection,
             buttonSection,
-            Text(wordPair.asPascalCase),
+            Container(
+              padding: EdgeInsets.only(bottom: 50),
+            ),
+            Text(
+              "Copy right reserved : ${wordPair.asPascalCase}",
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                color: Colors.greenAccent,
+              ),
+            ),
           ],
         ),
       ),
