@@ -3,14 +3,12 @@ import 'package:english_words/english_words.dart';
 
 void main() => runApp(const MyApp());
 
-
 class FavoriteWidget extends StatefulWidget {
   const FavoriteWidget({Key? key}) : super(key: key);
 
   @override
   State<FavoriteWidget> createState() => _FavoriteWidgetState();
 }
-
 
 class _FavoriteWidgetState extends State<FavoriteWidget> {
   bool _isFavorited = true;
@@ -35,16 +33,15 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
         ),
         SizedBox(
           width: 18,
-          child: SizedBox(
-            child: Text('$_favoriteCount')
-          ),
+          child: SizedBox(child: Text('$_favoriteCount')),
         ),
       ],
     );
   }
-  void _toggleFavorite(){
-    setState((){
-      if(_isFavorited) {
+
+  void _toggleFavorite() {
+    setState(() {
+      if (_isFavorited) {
         _favoriteCount -= 1;
         _isFavorited = false;
       } else {
